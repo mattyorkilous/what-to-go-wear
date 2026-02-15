@@ -3,16 +3,18 @@ package cmd
 import (
 	"os"
 
-	"fmt"
-
+	"github.com/mattyorkilous/what-to-go-wear/internal"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "what-to-go-wear",
 	Short: "An app to tell me what to wear.",
-	Long: `An app to tell me what to wear based on my closet, the day of the week, and the weather.`,
-	Run: func(cmd *cobra.Command, args []string) { },
+	Long: "An app to tell me what to wear based on my closet, " +
+		"the day of the week, and the weather.",
+	Run: func(cmd *cobra.Command, args []string) {
+		internal.Initialize()
+	},
 }
 
 func Execute() {
@@ -20,8 +22,6 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
-
-	fmt.Println("Beige shirt with blue pants.")
 }
 
 func init() {
